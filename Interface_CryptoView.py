@@ -32,7 +32,7 @@ from pydub.playback import play                            #""""""""""""""""""""
 
 #-----------------------------------------------------Localisation de l'emplacement des fichiers necessaires-----------------------------------------------------
 print("\n Bonjour/Bonsoir, ne pas faire fonctionner ce programme en utilisant les droits/commandes administrateur si l'utilisateur n'est pas l'Admin au quel cas le programme ne fonctionnera pas correctement. \n") #Information a lire dans la console
-sys.path.append('/home/'+USERNAME+'/CrytpoView_Projet/Services')              #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
+sys.path.append("/home/"+USERNAME+"/CryptoWatch/Services")              #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
 #print(USERNAME)                                                              #Test debug
 
 from nettoyage_du_cache import clear_cache                  #Bibliotheque permettant de nettoyer les fichiers cache PYTHON
@@ -164,7 +164,7 @@ def Affichage_Fear_Greed_Index():
 
     canvas.pack(expand=NO, fill=None)                                                                                                   #Placement du CANVAS de l'espace
 
-    Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
+    Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
 
     canvas.file = Image_Telechargee                                                                                                     #REFERENCE A GARDER pour pas perdre Tkinter sinon sans cette Reference , il perd l'image (Voir Explication ici: http://effbot.org/pyfaq/why-do-my-tkinter-images-not-appear.htm)
     
@@ -175,7 +175,7 @@ def Affichage_Fear_Greed_Index():
     def update_refresh_FGI():
      print("Mise a Jour de l'Image 'Fear_Greed_Index.png' ")                                                                             #Message dans la Console
      Get_Fear_Greed_Index()
-     Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
+     Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
      canvas.file = Image_Telechargee                                                                                                     #REFERENCE A GARDER pour pas perdre Tkinter sinon sans cette Reference , il perd l'image (Voir Explication ici: http://effbot.org/pyfaq/why-do-my-tkinter-images-not-appear.htm)
      canvas.itemconfig(image_on_canvas,image= Image_Telechargee)                                                                         #Permet la mise a jour de l'image
      #Après X secondes , on met à jour le contenue text du LABEL
@@ -582,7 +582,7 @@ def Fenetre_Surveillance_de_la_Paire():
    if boolean_popup  == True:                                                                                  #Si le boolean retournée par le fonction de recherche est vrai alors un jingle retentie et un pop-up apparait
     print("Surveillance Fruictueuse, Lancement du Jingle + Pop-Up d'Alerte!")                                  #Message visible dans la console
     #~Jingle
-    Alerte_popup= AudioSegment.from_mp3("/home/"+USERNAME+"/CrytpoView_Projet/Services/Sounds/MSN_WIZZ.mp3")   #Chargement du Jingle d'Alerte
+    Alerte_popup= AudioSegment.from_mp3("/home/"+USERNAME+"/CryptoWatch/Services/Sounds/MSN_WIZZ.mp3")   #Chargement du Jingle d'Alerte
     play(Alerte_popup)                                                                                         #Lecture de ce Jingle d'Alerte
     #~Jingle
     showinfo(tk_Annonce_0 , tk_Annonce_1 +"\nMessage Personnaliser: "+ tk_Message_Personnaliser)               #Declenchement du Pop-up d'Alerte

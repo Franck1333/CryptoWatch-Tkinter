@@ -11,11 +11,11 @@ USERNAME = getpass.getuser()                                #On enregistre le No
 
 def Re_tailler_une_image():
     basewidth = 300                                                                                             #Saisir la taille de base dont l'image doit etre rogner
-    img = Image.open('/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png')      #On ouvre l'image concernee
+    img = Image.open('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')      #On ouvre l'image concernee
     wpercent = (basewidth/float(img.size[0]))                                                                   #Calcule en pourcentage de la redimmension
     hsize = int((float(img.size[1])*float(wpercent)))                                                           #Calcule de la hauteur de l'image pour sa redimmension
     img = img.resize((basewidth,hsize), Image.ANTIALIAS)                                                        #Traitement de l'image
-    img.save('/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index_retailler.png')    #Enregistrement de la Modification apporte a l'image concernee
+    img.save('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index_retailler.png')    #Enregistrement de la Modification apporte a l'image concernee
 
 def Re_tailler_une_image_Donner(Base_de_Taille, Chemin_Image_Source , Chemin_Image_Modifiee):
     basewidth = Base_de_Taille

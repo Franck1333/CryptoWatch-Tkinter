@@ -39,12 +39,12 @@ def Get_Fear_Greed_Index():
     print("ANNONCE: Debut du Telechargement de l'Image Fear_Greed_Index.png")
 
     LIEN = "https://alternative.me/crypto/fear-and-greed-index.png"                                         #Localisation de l'image sur Internet a Telecharger
-    urlretrieve(LIEN,'/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png')  #Telechargement et Enregistrement de l'image
+    urlretrieve(LIEN,'/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')  #Telechargement et Enregistrement de l'image
     
     print("ANNONCE: Fin du Telechargement de l'Image Fear_Greed_Index.png")
 
     print("ANNONCE: Debut Modification de la taille de l'Image")
-    Re_tailler_une_image_Donner(330, '/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png' , '/home/'+USERNAME+'/CrytpoView_Projet/Services/Telechargements/Fear_Greed_Index.png') #Redimenssionement de l'image telechargee.
+    Re_tailler_une_image_Donner(330, '/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png' , '/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png') #Redimenssionement de l'image telechargee.
     print("ANNONCE: Fin Modification de la taille de l'Image")
 
 
