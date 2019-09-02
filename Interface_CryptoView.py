@@ -19,11 +19,15 @@ import datetime                                             #Blibliotheque perme
 import time                                                 #Blibliotheque permettant d'obtenir la date
 
 import getpass                                              #On importe la blibliotheque "getpass"
+global USERNAME
 USERNAME = getpass.getuser()                                #On enregistre le Nom de l'Utilisateur
 
 from tkinter import *                                       #Blibliotheque permettant d'obtenir Tkinter(G.U.I)
 from tkinter.messagebox import *                            #Blibliotheque permettant d'obtenir les boites de dialogues (G.U.I)
 import tkinter.ttk                                          #Blibliotheque permettant de charger un composant Tkinter(G.U.I)
+
+from pydub import AudioSegment                             #Bibliotheque permettant de jouer des Sons et Jingles
+from pydub.playback import play                            #""""""""""""""""""""""""""""""""""""""""""""""""""""
 #---------------------------------------Importante LIB---------------------------------------
 
 #-----------------------------------------------------Localisation de l'emplacement des fichiers necessaires-----------------------------------------------------
@@ -568,17 +572,22 @@ def Fenetre_Surveillance_de_la_Paire():
 
   tk_tk_Annonce_0.pack()
   tk_tk_Annonce_1.pack()
+
   tk_tk_Message_Personnaliser.pack()
 
   #Rafraichissement des Informations
   def update_Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser):
    tk_tk_Annonce_0["text"] , tk_tk_Annonce_1["text"] , tk_tk_Message_Personnaliser["text"] , boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
    #Activation du Pop-up sous condition
-   if boolean_popup  == True:
-    print("Surveillance Fruictueuse, Lancement du Pop-Up d'Alerte!")
-    showinfo(tk_Annonce_0 , tk_Annonce_1 +"\nMessage Personnaliser: "+ tk_Message_Personnaliser)
-   
-   Surveillance_en_cours_de_la_Paire.after(2048 , lambda: update_Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser))
+   if boolean_popup  == True:                                                                                  #Si le boolean retournée par le fonction de recherche est vrai alors un jingle retentie et un pop-up apparait
+    print("Surveillance Fruictueuse, Lancement du Jingle + Pop-Up d'Alerte!")                                  #Message visible dans la console
+    #~Jingle
+    Alerte_popup= AudioSegment.from_mp3("/home/"+USERNAME+"/CrytpoView_Projet/Services/Sounds/MSN_WIZZ.mp3")   #Chargement du Jingle d'Alerte
+    play(Alerte_popup)                                                                                         #Lecture de ce Jingle d'Alerte
+    #~Jingle
+    showinfo(tk_Annonce_0 , tk_Annonce_1 +"\nMessage Personnaliser: "+ tk_Message_Personnaliser)               #Declenchement du Pop-up d'Alerte
+    
+   Surveillance_en_cours_de_la_Paire.after(2048 , lambda: update_Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)) #Raffraichissement des informations inclue dans la fenetre de surveillance de la paire toute les 2,48 secondes
    
   #Button de la Fenetre de Surveillance en cours
   Button(Surveillance_en_cours_de_la_Paire, text="Démarrer la Surveillance Maintenant", command=lambda: update_Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)).pack()  #Le mot-cle "LAMBDA" suivi de ":" permet de lancer le deroulement (l'actualisation) d'une fonction ayant des membre comme dans ce cas precis
