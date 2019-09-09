@@ -26,14 +26,14 @@ from tkinter import *                                       #Blibliotheque perme
 from tkinter.messagebox import *                            #Blibliotheque permettant d'obtenir les boites de dialogues (G.U.I)
 import tkinter.ttk                                          #Blibliotheque permettant de charger un composant Tkinter(G.U.I)
 
-from pydub import AudioSegment                             #Bibliotheque permettant de jouer des Sons et Jingles
-from pydub.playback import play                            #""""""""""""""""""""""""""""""""""""""""""""""""""""
+from pydub import AudioSegment                              #Bibliotheque permettant de jouer des Sons et Jingles
+from pydub.playback import play                             #""""""""""""""""""""""""""""""""""""""""""""""""""""
 #---------------------------------------Importante LIB---------------------------------------
 
 #-----------------------------------------------------Localisation de l'emplacement des fichiers necessaires-----------------------------------------------------
 print("\n Bonjour/Bonsoir, ne pas faire fonctionner ce programme en utilisant les droits/commandes administrateur si l'utilisateur n'est pas l'Admin au quel cas le programme ne fonctionnera pas correctement. \n") #Information a lire dans la console
-sys.path.append("/home/"+USERNAME+"/CryptoWatch/Services")              #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
-#print(USERNAME)                                                              #Test debug
+sys.path.append("/home/"+USERNAME+"/CryptoWatch/Services")  #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
+#print(USERNAME)                                            #Test debug
 
 from nettoyage_du_cache import clear_cache                  #Bibliotheque permettant de nettoyer les fichiers cache PYTHON
 
@@ -47,6 +47,8 @@ from Infos_complementaires import Get_Fear_Greed_Index      #Obtention d'une ima
 
 from Infos_Coins import Recherche_Info_Coin                 #Obtention des Informations detaillee concernant un Monnaie crypto relie a une autre monnaie (Crypto/Fiat)
 from Infos_Coins import Recherche_Et_Surveillance_Coin      #Permet la Surveillance d'une paire
+
+from Graph import Dessiner_Graph                            #Avec cette fontcion nous pouvons obtenir un graph en rapport avec la crypto-monnaie definie
 
 #-----------------------------------------------------Localisation de l'emplacement des fichiers necessaires-----------------------------------------------------
 
@@ -164,7 +166,7 @@ def Affichage_Fear_Greed_Index():
 
     canvas.pack(expand=NO, fill=None)                                                                                                   #Placement du CANVAS de l'espace
 
-    Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
+    Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')                 #Chargement de l'image
 
     canvas.file = Image_Telechargee                                                                                                     #REFERENCE A GARDER pour pas perdre Tkinter sinon sans cette Reference , il perd l'image (Voir Explication ici: http://effbot.org/pyfaq/why-do-my-tkinter-images-not-appear.htm)
     
@@ -174,8 +176,8 @@ def Affichage_Fear_Greed_Index():
     #--UPDATE--
     def update_refresh_FGI():
      print("Mise a Jour de l'Image 'Fear_Greed_Index.png' ")                                                                             #Message dans la Console
-     Get_Fear_Greed_Index()
-     Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')           #Chargement de la MAP
+     Get_Fear_Greed_Index()                                                                                                              #Obtention de l'Image a afficher
+     Image_Telechargee = PhotoImage(file='/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/Fear_Greed_Index.png')                 #Chargement de l'Image 
      canvas.file = Image_Telechargee                                                                                                     #REFERENCE A GARDER pour pas perdre Tkinter sinon sans cette Reference , il perd l'image (Voir Explication ici: http://effbot.org/pyfaq/why-do-my-tkinter-images-not-appear.htm)
      canvas.itemconfig(image_on_canvas,image= Image_Telechargee)                                                                         #Permet la mise a jour de l'image
      #Après X secondes , on met à jour le contenue text du LABEL
@@ -501,65 +503,62 @@ def Fenetre_Selection_de_la_Paire():
  Button(EnveloppeSelection, height=1, width=13, text="Go!",command=lambda: recuperation_input()).pack() #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
  #command=lambda: recuperation_input() >>> just means do this when i press the button
 #----------------------------------------Zone de Recherche Manuel----------------------------------------
- Button(Selection_de_la_Paire, text="Fermer", command=Selection_de_la_Paire.destroy).pack()                             #Affichage et Positionnement automatique du Bouton permettant de Fermer la fenetre "Selection_de_la_Paire"
+ Button(Selection_de_la_Paire, text="Fermer", command=Selection_de_la_Paire.destroy).pack()                                   #Affichage et Positionnement automatique du Bouton permettant de Fermer la fenetre "Selection_de_la_Paire"
 #------------------------------------------------------------------------------
 def Fenetre_Surveillance_de_la_Paire():
  #create child window
  global Surveillance_de_la_Paire
 
- Surveillance_de_la_Paire = Toplevel()
+ Surveillance_de_la_Paire = Toplevel()                                                                                        #Declaration d'une Nouvelle fenetre
 
  #Zone d'Affichage
- ALPHA_STATE_Label = Label(Surveillance_de_la_Paire, text="PRE-ALPHA \n")
- ALPHA_STATE_Label.pack() 
+ #ALPHA_STATE_Label = Label(Surveillance_de_la_Paire, text="PRE-ALPHA \n")
+ #ALPHA_STATE_Label.pack() 
  Presentation_Label = Label(Surveillance_de_la_Paire, text="Votre Alerte \n")
  Presentation_Label.pack()  
- EnveloppeSurveillance = LabelFrame(Surveillance_de_la_Paire, text="Etablir une Surveillance", padx=5, pady=5)        #Création d'une "Zone Frame" à Label
- EnveloppeSurveillance.pack(fill="both", expand="no")                                                                       #Positionnement Automatique avec des parametres pour la éZone Frame"
+ EnveloppeSurveillance = LabelFrame(Surveillance_de_la_Paire, text="Etablir une Surveillance", padx=5, pady=5)                #Création d'une "Zone Frame" à Label
+ EnveloppeSurveillance.pack(fill="both", expand="no")                                                                         #Positionnement Automatique avec des parametres pour la éZone Frame"
 
  #Zone de Saisie
  #Saisir la Paire a Surveiller
  Saisie_Paire = Label(EnveloppeSurveillance, text="Saisir la Paire à Surveiller en Temps-Réel:")
  Saisie_Paire.pack()
 
- Saisie_Paire_textBox=Text(EnveloppeSurveillance,height=1, width=13)                                                 #Affichage de la boite a texte
- Saisie_Paire_textBox.pack()                                                                                         #Positionnement Automatique de la boite a texte
+ Saisie_Paire_textBox=Text(EnveloppeSurveillance,height=1, width=13)                                                          #Affichage de la boite a texte
+ Saisie_Paire_textBox.pack()                                                                                                  #Positionnement Automatique de la boite a texte
 
- #Button(EnveloppeSurveillance, height=1, width=13, text="Enregistrement",command=lambda: recuperation_input()).pack() #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
+ #Button(EnveloppeSurveillance, height=1, width=13, text="Enregistrement",command=lambda: recuperation_input()).pack()        #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
  ##command=lambda: recuperation_input() >>> just means do this when i press the button
 
  #Saisir le Montant a Surveiller
  Saisie_Montant = Label(EnveloppeSurveillance, text="Saisir le Montant à Surveiller en Temps-Réel:")
  Saisie_Montant.pack()
 
- Saisie_Montant_textBox=Text(EnveloppeSurveillance,height=1, width=13)                                                 #Affichage de la boite a texte
- Saisie_Montant_textBox.pack()                                                                                         #Positionnement Automatique de la boite a texte
-
- #Button(EnveloppeSurveillance, height=1, width=13, text="Enregistrement",command=lambda: recuperation_input()).pack() #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
- ##command=lambda: recuperation_input() >>> just means do this when i press the button
+ Saisie_Montant_textBox=Text(EnveloppeSurveillance,height=1, width=13)                                                        #Affichage de la boite a texte
+ Saisie_Montant_textBox.pack()                                                                                                #Positionnement Automatique de la boite a texte
  
  #Saisir un Message Personnaliser a afficher
  Saisie_Message_Personnaliser = Label(EnveloppeSurveillance, text="Indiquer un Message? ")
  Saisie_Message_Personnaliser.pack()
 
- Saisie_Message_Personnaliser_textBox=Text(EnveloppeSurveillance,height=3, width=33)                                                 #Affichage de la boite a texte
- Saisie_Message_Personnaliser_textBox.pack()                                                                                         #Positionnement Automatique de la boite a texte
+ Saisie_Message_Personnaliser_textBox=Text(EnveloppeSurveillance,height=3, width=33)                                          #Affichage de la boite a texte
+ Saisie_Message_Personnaliser_textBox.pack()                                                                                  #Positionnement Automatique de la boite a texte
 
  Button(EnveloppeSurveillance, height=1, width=16, text="Placer la Surveillance",command=lambda: recuperation_input()).pack() #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
  ##command=lambda: recuperation_input() >>> just means do this when i press the button
 
  #Recuperation    
  def recuperation_input():
-  Recuperation_Paire=Saisie_Paire_textBox.get("1.0","end-1c")                                       #Recuperation de la Valeur saisie dans la boite a texte
-  Recuperation_Montant=Saisie_Montant_textBox.get("1.0","end-1c")                                   #Recuperation de la Valeur saisie dans la boite a texte
-  Recuperation_Message_Personnaliser=Saisie_Message_Personnaliser_textBox.get("1.0","end-1c")       #Recuperation de la Valeur saisie dans la boite a texte
+  Recuperation_Paire=Saisie_Paire_textBox.get("1.0","end-1c")                                                              #Recuperation de la Valeur saisie dans la boite a texte
+  Recuperation_Montant=Saisie_Montant_textBox.get("1.0","end-1c")                                                          #Recuperation de la Valeur saisie dans la boite a texte
+  Recuperation_Message_Personnaliser=Saisie_Message_Personnaliser_textBox.get("1.0","end-1c")                              #Recuperation de la Valeur saisie dans la boite a texte
   print(Recuperation_Paire +" " + Recuperation_Montant +" "+ Recuperation_Message_Personnaliser)                           #Affichage de cette valeur dans la console
-  Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+  Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)                  #On donne les information saisie a cette fonction pour traitement
 
  def Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser):
   global Surveillance_en_cours_de_la_Paire
   Surveillance_en_cours_de_la_Paire = Toplevel()
-  Enveloppe_Etat_Surveillance = LabelFrame(Surveillance_en_cours_de_la_Paire, text="Surveillance En Cours", padx=5, pady=5)          #Création d'une "Zone Frame" à Label
+  Enveloppe_Etat_Surveillance = LabelFrame(Surveillance_en_cours_de_la_Paire, text="Surveillance En Cours", padx=5, pady=5) #Création d'une "Zone Frame" à Label
   Enveloppe_Etat_Surveillance.pack(fill="both", expand="no")                                                                #Positionnement Automatique avec des parametres pour la éZone Frame"
 
   #Recuperation des Informations
@@ -582,7 +581,7 @@ def Fenetre_Surveillance_de_la_Paire():
    if boolean_popup  == True:                                                                                  #Si le boolean retournée par le fonction de recherche est vrai alors un jingle retentie et un pop-up apparait
     print("Surveillance Fruictueuse, Lancement du Jingle + Pop-Up d'Alerte!")                                  #Message visible dans la console
     #~Jingle
-    Alerte_popup= AudioSegment.from_mp3("/home/"+USERNAME+"/CryptoWatch/Services/Sounds/MSN_WIZZ.mp3")   #Chargement du Jingle d'Alerte
+    Alerte_popup= AudioSegment.from_mp3("/home/"+USERNAME+"/CryptoWatch/Services/Sounds/MSN_WIZZ.mp3")         #Chargement du Jingle d'Alerte
     play(Alerte_popup)                                                                                         #Lecture de ce Jingle d'Alerte
     #~Jingle
     showinfo(tk_Annonce_0 , tk_Annonce_1 +"\nMessage Personnaliser: "+ tk_Message_Personnaliser)               #Declenchement du Pop-up d'Alerte
@@ -593,10 +592,57 @@ def Fenetre_Surveillance_de_la_Paire():
   Button(Surveillance_en_cours_de_la_Paire, text="Démarrer la Surveillance Maintenant", command=lambda: update_Affichage_Etat_Surveillance(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)).pack()  #Le mot-cle "LAMBDA" suivi de ":" permet de lancer le deroulement (l'actualisation) d'une fonction ayant des membre comme dans ce cas precis
   Button(Surveillance_en_cours_de_la_Paire,text="Arrêter la Surveillance Maintenant", command=Surveillance_en_cours_de_la_Paire.destroy).pack()
  #Bouton de Fermeture
- Button(Surveillance_de_la_Paire, text="Fermer", command=Surveillance_de_la_Paire.destroy).pack()                           #Affichage et Positionnement automatique du Bouton permettant de Fermer la fenetre "Selection_de_la_Paire"
+ Button(Surveillance_de_la_Paire, text="Fermer", command=Surveillance_de_la_Paire.destroy).pack()               #Affichage et Positionnement automatique du Bouton permettant de Fermer la fenetre "Selection_de_la_Paire"
+
 #------------------------------------------------------------------------------
-Button(fenetre, text="En Direct du Marché", command=Fenetre_Selection_de_la_Paire).pack() #.grid(row=4, column=10)      #Bouton pour Ouvrir la fenêtre "En Direct du Marche"
-Button(fenetre, text="Surveillance du Marché", command=Fenetre_Surveillance_de_la_Paire).pack()
+def Fenetre_Graph_de_la_Crypto():
+ #create child window
+ global Graph_de_la_Crypto
+ Graph_de_la_Crypto = Toplevel()
+
+ #Zone d'Affichage
+ Presentation_Label = Label(Graph_de_la_Crypto, text="Obtenir un Graphique avec CoinMarketCap \n")
+ Presentation_Label.pack()  
+
+ EnveloppeGraph = LabelFrame(Graph_de_la_Crypto, text="Informations Necessaires", padx=5, pady=5)        #Création d'une "Zone Frame" à Label
+ EnveloppeGraph.pack(fill="both", expand="no")                                                           #Positionnement Automatique avec des parametres pour la éZone Frame"
+
+ #Zone de Saisie
+ #Saisir la Crypto-Monnaie a Observer
+ Saisie_Crypto = Label(EnveloppeGraph, text="Saisir le Nom ENTIER de la crypto à Observer: \n Ex: Bitcoin")
+ Saisie_Crypto.pack()
+ Saisie_Crypto_textBox=Text(EnveloppeGraph,height=1, width=13)                                           #Affichage de la boite a texte
+ Saisie_Crypto_textBox.pack()                                                                            #Positionnement Automatique de la boite a texte
+
+ #Saisir la Date du Debut du Graphique a afficher
+ Saisie_Date_Debut = Label(EnveloppeGraph, text="Saisir la Date du début du Graph: \n Ex: YYYY-MM-DD")
+ Saisie_Date_Debut.pack()
+ Saisie_Date_Debut_textBox=Text(EnveloppeGraph,height=1, width=13)                                       #Affichage de la boite a texte
+ Saisie_Date_Debut_textBox.pack()                                                                        #Positionnement Automatique de la boite a texte
+ 
+ #Saisir la Date de Fin du Graphique a afficher
+ Saisie_Date_Fin = Label(EnveloppeGraph, text="Saisir la Date de Fin du Graph")
+ Saisie_Date_Fin.pack()
+ Saisie_Date_Fin_textBox=Text(EnveloppeGraph,height=1, width=13)                                         #Affichage de la boite a texte
+ Saisie_Date_Fin_textBox.pack() 
+
+ Button(EnveloppeGraph, height=1, width=16, text="Obtention du Graph",command=lambda: recuperation_input()).pack() #Affichage et Positionnement automatique du Bouton d'envoie de la valeur contenue dans la boite a texte
+ ##command=lambda: recuperation_input() >>> just means do this when i press the button
+
+ #Recuperation    
+ def recuperation_input():
+  Recuperation_Crypto=Saisie_Crypto_textBox.get("1.0","end-1c")                                           #Recuperation de la Valeur saisie dans la boite a texte
+  Recuperation_Date_Debut=Saisie_Date_Debut_textBox.get("1.0","end-1c")                                   #Recuperation de la Valeur saisie dans la boite a texte
+  Recuperation_Date_Fin=Saisie_Date_Fin_textBox.get("1.0","end-1c")                                       #Recuperation de la Valeur saisie dans la boite a texte
+  print(Recuperation_Crypto +" " + Recuperation_Date_Debut +" "+ Recuperation_Date_Fin)                   #Affichage de cette valeur dans la console
+  Dessiner_Graph(Recuperation_Crypto,Recuperation_Date_Debut,Recuperation_Date_Fin)                       #On donne les information saisie a cette fonction pour traitement
+
+ #Bouton de Fermeture
+ Button(Graph_de_la_Crypto, text="Fermer", command=Graph_de_la_Crypto.destroy).pack() 
+#------------------------------------------------------------------------------
+Button(fenetre, text="En Direct du Marché", command=Fenetre_Selection_de_la_Paire).pack()        #Bouton pour Ouvrir la fenêtre "En Direct du Marche"
+Button(fenetre, text="Surveillance du Marché", command=Fenetre_Surveillance_de_la_Paire).pack()  #Bouton pour Ouvrir la fenêtre "Surveillance du Marche" 
+Button(fenetre, text="Visualiser le Cours du Marché", command=Fenetre_Graph_de_la_Crypto).pack() #Bouton pour Ouvrir la fenêtre "Visualiser le Cours du Marche"
 #-------------------------------------------------------------------Contenue Fenetres Secondaires-------------------------------------------------------------------
 
 

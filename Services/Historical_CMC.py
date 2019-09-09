@@ -9,11 +9,10 @@ import getpass                                              #On importe la blibl
 global USERNAME
 USERNAME = getpass.getuser()                                #On enregistre le Nom de l'Utilisateur
 
-from cmc import coinmarketcap
-from datetime import timedelta
-from datetime import datetime
-import pandas
-from pandas import DataFrame
+from cmc import coinmarketcap                               #On importe le module CMC obtenir via ' pip3 install cmc '
+from datetime import datetime                               #On importe datetime pour la manipulation des variable comportant des notions temporel tel que la date
+import pandas                                               #On importe pandas pour traiter les informations recue et les enregistrer sous format CSV (excel-like)
+from pandas import DataFrame                                #Cette partie de pandas permet de traiter les DataFrame de pandas et de les manipuler dans ce programme
 
 def Recuperation_Historique_Crypto(Nom_Entier_Crypto):
     #Obtention des informations des Informations et Enregistrement de celle-ci en fihcier .CSV
@@ -29,18 +28,18 @@ def Recuperation_Historique_Crypto(Nom_Entier_Crypto):
     start_date = '2019-05-13'                                      #Date donner pour etablir le debut du graphique
     #------
     # retrieves data and stores .msg files in DOWNLOAD_DIR
-    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'data/coinmarketcap' , fields = ['Close'])
+    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'Telechargements/coinmarketcap/MSG' , fields = ['Close'])
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
-    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Exemple/Graphs/CMC/data/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
+    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
     print("CSV Obtenue")                                            #Message afficher dans la console
      
 #def Recuperation_CSV():
     #Lecture du fichier CSV recue
     #~
     #~
-    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Exemple/Graphs/CMC/data/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
+    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
     #print(df_recue.columns)                                                                                                            #Affichage des titres des Colonnes du fichier recue
     #print(df_recue)                                                                                                                    #Affichage du Fichier reçue .CSV
 
@@ -71,29 +70,29 @@ def Recuperation_Historique_Crypto_2(Nom_Entier_Crypto,DATE_debut,DATE_fin):
     #Obtention des informations des Informations et Enregistrement de celle-ci en fihcier .CSV
     #~
     #~
-    cryptos = [Nom_Entier_Crypto.casefold()]                       #La crypto-monnaie choisi qui sera Visualiser par Graphique
+    cryptos = [Nom_Entier_Crypto.casefold()]                        #La crypto-monnaie choisi qui sera Visualiser par Graphique
 
-    global Nom_Entier_Crypto_path                                  #Passage en Global de la crypto choisi pour etre utiliser en tant que chemin lorsqu'il sera lu pour et par le système
-    Nom_Entier_Crypto_path = Nom_Entier_Crypto                     #Enregistrelent de la crypto choisi pour son utilisation en tanr que chemin de lecture
+    global Nom_Entier_Crypto_path                                   #Passage en Global de la crypto choisi pour etre utiliser en tant que chemin lorsqu'il sera lu pour et par le système
+    Nom_Entier_Crypto_path = Nom_Entier_Crypto                      #Enregistrelent de la crypto choisi pour son utilisation en tanr que chemin de lecture
     #-----
     #end_date_datetimevar = datetime.now().strftime('%Y-%m-%d')     #Enregistrement de la date d'aujourdui au format ISO
     #end_date = end_date_datetimevar                                #Passage de la variable a une autre pour eviter une erreur du a l'indication du format ISO
-    start_date = DATE_debut                                     #Date donner pour etablir le debut du graphique
+    start_date = DATE_debut                                         #Date donner pour etablir le debut du graphique
     end_date = DATE_fin
     #------
     # retrieves data and stores .msg files in DOWNLOAD_DIR
-    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'data/coinmarketcap' , fields = ['Close'])
+    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'Telechargements/coinmarketcap/MSG' , fields = ['Close'])
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
-    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Exemple/Graphs/CMC/data/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
+    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
     print("CSV Obtenue")                                            #Message afficher dans la console
      
 #def Recuperation_CSV():
     #Lecture du fichier CSV recue
     #~
     #~
-    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Exemple/Graphs/CMC/data/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
+    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
     #print(df_recue.columns)                                                                                                            #Affichage des titres des Colonnes du fichier recue
     #print(df_recue)                                                                                                                    #Affichage du Fichier reçue .CSV
 
@@ -123,5 +122,5 @@ def Recuperation_Historique_Crypto_2(Nom_Entier_Crypto,DATE_debut,DATE_fin):
 if __name__ == "__main__":
     print("Pour utiliser ce programme, il vous faut saisir le Nom entier de façon correcte du Coin/Token en question")
     #Recuperation_Historique_Crypto('Bitcoin')                                                                                 #Obtention des informations par rapport a la crypto-monnaie saisi
-    #Recuperation_Historique_Crypto_2('Bitcoin','2013-05-13','2019-09-09')
+    #Recuperation_Historique_Crypto_2('Bitcoin','2018-05-13','2019-09-09')
     #Recuperation_CSV()                                                                                                        #Lecture du fichier CSV
