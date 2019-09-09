@@ -28,7 +28,7 @@ def Recuperation_Historique_Crypto(Nom_Entier_Crypto):
     start_date = '2019-05-13'                                      #Date donner pour etablir le debut du graphique
     #------
     # retrieves data and stores .msg files in DOWNLOAD_DIR
-    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'Telechargements/coinmarketcap/MSG' , fields = ['Close'])
+    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = '/CryptoWatch/Services/Telechargements/CMC/MSG' , fields = ['Close'])
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
@@ -81,7 +81,7 @@ def Recuperation_Historique_Crypto_2(Nom_Entier_Crypto,DATE_debut,DATE_fin):
     end_date = DATE_fin
     #------
     # retrieves data and stores .msg files in DOWNLOAD_DIR
-    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = 'Telechargements/coinmarketcap/MSG' , fields = ['Close'])
+    df_cryptos = coinmarketcap.getDataFor(cryptos, start_date, end_date, DOWNLOAD_DIR = '/CryptoWatch/Services/Telechargements/CMC/MSG' , fields = ['Close'])
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
