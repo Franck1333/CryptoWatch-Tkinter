@@ -3,7 +3,7 @@
 # CryptoWatch Tkinter Version
 
 This Software allow you to get financials informations about cryptocurrencies by using Python3 and the Tkinter UI that will let you interact to the software with a basic graphic user interface.
-[![Image](https://i.goopics.net/LXZ5A.jpg)](https://goopics.net/i/LXZ5A)  
+[![Image](https://alternative.me/crypto/fear-and-greed-index.png)](https://alternative.me/crypto/fear-and-greed-index.png)  
 
 ## Getting Started  
   
