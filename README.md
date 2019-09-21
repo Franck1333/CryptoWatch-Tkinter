@@ -36,7 +36,7 @@ Now especially for the *Pimoroni HyperPixel 4* in our case :
 	- The command line Setup (need to be install) : https://get.pimoroni.com/hyperpixel4 | bash 
 ```
   
-### Downloading/Installing - EASY WAY !!!  
+### Downloading/InstallingMAP_downloads  
 To get and downloaded the files , use this line : 
 ```
 git clone https://github.com/Franck1333/CryptoWatch-Tkinter.git
@@ -91,8 +91,8 @@ This feature allow also to the main program to download an Image on the website 
 ```
  - Folders inside
  ```
- - Divers : 
- - MAP_downloads : 
+ - Sounds : Sound Pack use by the Main Program 
+ - Téléchargements : This folder is use by the Main Program to download in this folder all the ressources which come from Internet 
  ```
 
 ## Authors
