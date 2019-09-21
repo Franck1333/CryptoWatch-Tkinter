@@ -63,7 +63,7 @@ That's how to test features:
 
 ## The Folders and Files
 
-In this project we've got three folders
+In this project we've got some folders
 
 #### Folders
 ```
