@@ -32,14 +32,14 @@ def Recuperation_Historique_Crypto(Nom_Entier_Crypto):
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
-    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
+    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch-Tkinter/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
     print("CSV Obtenue")                                            #Message afficher dans la console
      
 #def Recuperation_CSV():
     #Lecture du fichier CSV recue
     #~
     #~
-    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
+    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch-Tkinter/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
     #print(df_recue.columns)                                                                                                            #Affichage des titres des Colonnes du fichier recue
     #print(df_recue)                                                                                                                    #Affichage du Fichier reçue .CSV
 
@@ -85,14 +85,14 @@ def Recuperation_Historique_Crypto_2(Nom_Entier_Crypto,DATE_debut,DATE_fin):
 
     #print(df_cryptos['bitcoin']['Close'])                          #Nous recevons la date plus le prix du BTC 
     #Une fois recue, les informations obtenue sont enregistrer dans un fichier CSV avec pour nom de fichier la crypto-monnaie saisie au prealable
-    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
+    df_cryptos[Nom_Entier_Crypto.casefold()]['Close'].to_csv(r'/home/'+USERNAME+'/CryptoWatch-Tkinter/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto.casefold()+'_USD.csv', header = True)
     print("CSV Obtenue")                                            #Message afficher dans la console
      
 #def Recuperation_CSV():
     #Lecture du fichier CSV recue
     #~
     #~
-    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
+    df_recue = pandas.read_csv('/home/'+USERNAME+'/CryptoWatch-Tkinter/Services/Telechargements/CMC/CSV/'+Nom_Entier_Crypto_path.casefold()+'_USD.csv') #Lecture dans la console du fichier CSV obtenue après traitement
     #print(df_recue.columns)                                                                                                            #Affichage des titres des Colonnes du fichier recue
     #print(df_recue)                                                                                                                    #Affichage du Fichier reçue .CSV
 

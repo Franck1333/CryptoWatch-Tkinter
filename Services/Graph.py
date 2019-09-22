@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 #---------------------------------------------
 import sys
-sys.path.append("/home/"+USERNAME+"/CryptoWatch/Services")              #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
+sys.path.append("/home/"+USERNAME+"/CryptoWatch-Tkinter/Services")              #On indique au systeme ou ce situe le repertoire "Services" dans l'Appareil
 #print(USERNAME)
 from Historical_CMC import Recuperation_Historique_Crypto
 from Historical_CMC import Recuperation_Historique_Crypto_2
