@@ -59,7 +59,7 @@ To run the project ; if you want to see the console activities , you can launch 
   
 That's how to test features:
 
-    sudo python3 <file>.py
+    python3 <file>.py
 
 ## The Folders and Files
 
@@ -88,8 +88,10 @@ This feature allow also to the main program to download an Image on the website 
 - Re_tailler_une_image.py : This feature allow to resize a picture.
 
 - nettoyage_du_cache.py : Ancient program that allow all the program which using to delete all the Python2 Cache Files.
+
 ```
  - Folders inside
+ 
  ```
  - Sounds : Sound Pack use by the Main Program 
  - Téléchargements : This folder is use by the Main Program to download in this folder all the ressources which come from Internet 
