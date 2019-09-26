@@ -18,6 +18,6 @@ setup(
     license='lgpl',
     packages=find_packages(),
     include_package_data=False,
-    install_requires=["pydub","cmc","pandas","numpy","matplotlib"], #Get the Dependencies from Pypi (pip install)
+    install_requires=["cmc","pandas","numpy","matplotlib","pydub"], #Get the Dependencies from Pypi (pip install)
     #dependency_links=[''], #Get the Dependencies via HTTP(s)
 )
