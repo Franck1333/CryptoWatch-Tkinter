@@ -30,6 +30,11 @@ A Display (like the Pimoroni 4inch HyperPixel Display --> https://bit.ly/2FVOy5j
 - An OS up to date
 ```
 
+Be sure to be Up to date with your OS and Python3 environement with this command line:
+```
+- sudo apt-get update && sudo apt-get upgrade && sudo pip3 install --upgrade pip
+```
+
 Now especially for the *Pimoroni HyperPixel 4* in our case :
 ```
 	- The Github page : https://github.com/pimoroni/hyperpixel4
