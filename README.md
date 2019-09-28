@@ -53,6 +53,11 @@ When you did it , you will have to launch the file called "setup.py" to install 
   sudo python3 setup.py install
 ```
 
+- If some problem during the installation occured , please execute this command :
+```
+  sudo pip3 install cbpro cmc pandas numpy matplotlib pydub
+```
+
 ## Run
 #### First Way to run the project :
 To run the project , you can run the small script file called "Start.sh" in the main folder ; it's will launch the project in the background.
