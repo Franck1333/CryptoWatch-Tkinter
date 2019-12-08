@@ -602,7 +602,11 @@ def Fenetre_Graph_de_la_Crypto():
 
  #Zone d'Affichage
  Presentation_Label = Label(Graph_de_la_Crypto, text="Obtenir un Graphique avec CoinMarketCap \n")
- Presentation_Label.pack()  
+ Presentation_Label.pack()
+ 
+ #Un Bug a ete signaler a l'equipe de developpement , en attente de correction (https://tinyurl.com/bugCMC19)
+ BugSignale_Label = Label(Graph_de_la_Crypto, text="The Bug reported here: https://tinyurl.com/bugCMC19")
+ BugSignale_Label.pack()
 
  EnveloppeGraph = LabelFrame(Graph_de_la_Crypto, text="Informations Necessaires", padx=5, pady=5)        #Création d'une "Zone Frame" à Label
  EnveloppeGraph.pack(fill="both", expand="no")                                                           #Positionnement Automatique avec des parametres pour la éZone Frame"
