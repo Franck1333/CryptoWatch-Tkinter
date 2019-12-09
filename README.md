@@ -59,11 +59,8 @@ When you did it , you will have to launch the file called "setup.py" to install 
 ```
 
 ## Run
-#### First Way to run the project :
-To run the project , you can run the small script file called "Start.sh" in the main folder ; it's will launch the project in the background.
-
-#### Second Way to run the project :
-To run the project ; if you want to see the console activities , you can launch the file called "Interface_CryptoView.py"  into the Command Line Prompt with "sudo python3 Interface_CryptoView.py" in the main folder.
+#### The Way to run the project :
+To run the project ; if you want to see the console activities , you can launch the file called "Interface_CryptoView.py"  into the Command Line Prompt with "python3 Interface_CryptoView.py" in the main folder.
 
 ## Running the tests  
   
