@@ -4,7 +4,7 @@
 
 This Software allow you to get financials informations about cryptocurrencies by using Python3 and the Tkinter UI that will let you interact to the software with a basic graphic user interface.
 
-*Kivy Version here: [https://github.com/Franck1333/CryptoWatch-Kivy](https://github.com/Franck1333/CryptoWatch-Kivy)*
+*Kivy Version here: [https://franck1333.github.io/CryptoWatch-Kivy/](https://franck1333.github.io/CryptoWatch-Kivy/)*
 
 [![Image](https://alternative.me/crypto/fear-and-greed-index.png)](https://alternative.me/crypto/fear-and-greed-index.png)  
 
