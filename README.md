@@ -41,7 +41,7 @@ Now especially for the *Pimoroni HyperPixel 4* in our case :
 	- The command line Setup (need to be install) : https://get.pimoroni.com/hyperpixel4 | bash 
 ```
   
-### Downloading/InstallingMAP_downloads  
+### Downloading/Installing  
 To get and downloaded the files , use this line : 
 ```
 git clone https://github.com/Franck1333/CryptoWatch-Tkinter.git
